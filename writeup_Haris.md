@@ -92,7 +92,7 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Lambda         		| 32x32x1 Grayscale Image						| 
-| Cropping2D     	| 1x1 stride, VALID padding, output 28x28x13 	|
+| Cropping2D| 1x1 stride, VALID padding, output 28x28x13 	|
 | Conv2D					|												|
 | Conv2D	      	| 2x2 stride, output 14x14x13   				|
 | Conv2D	    | 1x1 stride, VALID padding, output 10x10x23 	|
