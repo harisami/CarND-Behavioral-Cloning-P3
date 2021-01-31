@@ -69,6 +69,7 @@ My first step was to use a single convolutional layer neural network to test my 
 * 1 convolution layer
 * Flatten layer
 * 1 fully-connected layer
+
 I split the datat set into 75% training and 25% validation data sets. The simulation worked fine in the autonomous mode (as intended, although the car went off road right as the simulation started) but the results had high mean squared error (MSE) on both the training and validation sets. This implied underfitting. In order to avoid that, I had to incorporate more convolutional layers and train on more data.
 
 Hence, I implemented a convolution neural network model similar to the NVIDIA model for self-driving cars. I thought this model might be more appropriate because it incorporates similar data and challenges as the task at hand.
@@ -79,6 +80,7 @@ To combat this challenge, I first decided to collect more data by driving more.
 * 3 laps of center lane driving
 * 1 lap of recovery driving from the sides
 * 1 lap of driving smoothly around the curves
+
 With this bigger dataset, my model gave out low MSE on both the training and validation sets.
 
 Once more, there came the turn of running the simulator yet again to see if the car would drive the complete lap without going off the road. And it did! You can check out the video `run1.mp4`.
