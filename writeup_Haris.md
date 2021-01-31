@@ -21,6 +21,9 @@ The goals/steps of this project are the following:
 [image6]: ./examples/righttocenter_02.jpg "Recovery Image"
 [image7]: ./examples/curve_01.jpg "Curve Image"
 [image8]: ./examples/curve_02.jpg "Curve Image"
+[image9]: ./examples/sample_image.jpg "Original Image"
+[image10]: ./examples/sample_image_cropped.jpg "Cropped Image"
+[image11]: ./examples/visualization.jpg "Loss Visualization"
 
 ---
 ### Required Files and Quality of Code
@@ -132,12 +135,27 @@ I then recorded the vehicle recovering from the left and right sides of the road
 Further on, I also recorded another lap of smooth driving around the curves. Here are a couple of sample images.
 
    ![alt text][image7]          ![alt text][image8]
+  
 
-Etc ....
+After the collection process, I had 15099 number of data images. I then preprocessed this data by normalizing and cropping the images.
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+Normalization: divided each pixel by 255 (max value of a pixel) and shifted to zero-mean data set.
 
+```python
+    model.add(Lambda(lambda x: x/255.0 - 0.5, input_shape=(160,320,3)))
+```
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+Cropping: I crop 70 rows of pixels from the top of the image and 25 rows from the bottom.
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+```python
+    model.add(Cropping2D(cropping=((70,25), (0,0))))
+```
+Here is an example of the crop.
+
+   ![alt text][image9]          ![alt text][image10]
+
+I then shuffled the data set and put 25% of the data aside as a validation set.
+
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 3 beyond which the MSE on validation set stopped decreasing. I used an adam optimizer so that manually training the learning rate wasn't necessary. Check out the loss graph below.
+
+![alt text][image11]
