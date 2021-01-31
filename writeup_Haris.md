@@ -101,7 +101,7 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 | Dense		            | Fully Connected Layer, output 10			         |
 | Dense					| Fully Connected Layer, output 1					 |
 
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
+Here is a visualization of the architecture (image borrowed from NVIDIA).
 
 ![alt text][image1]
 
