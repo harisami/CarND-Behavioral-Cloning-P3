@@ -55,33 +55,35 @@ I have used the split of 75% training data and 25% validation data of the full d
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (`model.py line 46`).
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
+I used a combination of center lane driving, recovery driving from both sides and smooth driving around the curves to collect enough useful training data.
 
-For details about how I created the training data, see the next section. 
+### Architecture and Training Documentation
 
-### Model Architecture and Training Strategy
+#### 1. Solution Design
 
-#### 1. Solution Design Approach
+My first step was to use a single convolutional layer neural network to test my `model.py` script and simulation. I had only collected 1 lap of center lane driving data. Then I simply implemented the following.
+* 1 convolution layer
+* Flatten layer
+* 1 fully-connected layer
+I split the datat set into 75% training and 25% validation data sets. The simulation worked fine in the autonomous mode (as intended, although the car went off road right as the simulation started) but the results had high mean squared error (MSE) on both the training and validation sets. This implied underfitting. In order to avoid that, I had to incorporate more convolutional layers and train on more data.
 
-The overall strategy for deriving a model architecture was to ...
+Hence, I implemented a convolution neural network model similar to the NVIDIA model for self-driving cars. I thought this model might be more appropriate because it incorporates similar data and challenges as the task at hand.
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+I trained on the same data set as before and I found that my new model had a low MSE on the training set but a high MSE on the validation set. This implied that the model was overfitting. Running the simulation, there were improvements than the previous iteration but the car would go off road at the second curve.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
+To combat this challenge, I first decided to collect more data by driving more.
+* 3 laps of center lane driving
+* 1 lap of recovery driving from the sides
+* 1 lap of driving smoothly around the curves
+With this bigger dataset, my model gave out low MSE on both the training and validation sets.
 
-To combat the overfitting, I modified the model so that ...
+Once more, there came the turn of running the simulator yet again to see if the car would drive the complete lap without going off the road. And it did! You can check out the video `run1.mp4`.
 
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
-
-At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
-
-#### 2. Final Model Architecture
+#### 2. Model Architecture
 
 The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
 
