@@ -14,9 +14,11 @@ The goals/steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/cnn_architecture.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
+[image2]: ./examples/center_lane.jpg "Center Lane Driving Image"
+[image3]: ./examples/lefttocenter_01.jpg "Recovery Image"
+[image4]: ./examples/lefttocenter_02.jpg "Recovery Image"
+[image5]: ./examples/righttocenter_01.jpg "Recovery Image"
+[image6]: ./examples/righttocenter_02.jpg "Recovery Image"
 
 ---
 ### Required Files and Quality of Code
@@ -101,23 +103,29 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 | Dense		            | Fully Connected Layer, output 10			         |
 | Dense					| Fully Connected Layer, output 1					 |
 
+`Lambda` layer normalizes the data set as well shifts it to zero mean (`line 33`). In order to remove extra unnecessary data and focus on the road, the `Cropping2D` layer removes 70 rows from the top of every image and 25 rows from the bottom resulting in an image shape of `65x320x3`. Then comes 3 convolutional layers with 5x5 kernel size and a stride of 2x2. The depth of these layers increase every step.
+
+Next, are 2 convolutional layers with 3x3 kernel size and 1x1 stride to further increase the number of neurons. All convolutional layers are RELU activated to introduce non-linearity (`lines 35-39`). Next and finally, fully connected layers come up.
+
 Here is a visualization of the architecture (image borrowed from NVIDIA).
 
 ![alt text][image1]
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behavior, I first recorded 3 laps on track 1 using center lane driving. Here is an example image of center lane driving:
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle recovering from the left and right sides of the road back to center so that the vehicle would learn what to do if it finds itself at either side of the road. The following images are a few examples from recovery driving.
 
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
+`Left to center maneuver`
 
-Then I repeated this process on track two in order to get more data points.
+   ![alt text][image3]          ![alt text][image4]
+          
+`Right to center maneuver`
+
+   ![alt text][image5]          ![alt text][image6]
 
 To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
 
