@@ -83,11 +83,26 @@ To combat this challenge, I first decided to collect more data by driving more.
 
 With this bigger dataset, my model gave out low MSE on both the training and validation sets.
 
-Once more, there came the turn of running the simulator yet again to see if the car would drive the complete lap without going off the road. And it did! You can check out the video `run1.mp4`.
+Once more, there came the turn of running the simulator yet again to see if the car would drive the complete lap without going off the road. And it did! Check out the video `run1.mp4`.
 
 #### 2. Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
+The final model architecture (`model.py lines 33-44`) consists of a convolution neural network with the following layers and layer sizes.
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Lambda         		| 32x32x1 Grayscale Image						| 
+| Cropping2D     	| 1x1 stride, VALID padding, output 28x28x13 	|
+| Conv2D					|												|
+| Conv2D	      	| 2x2 stride, output 14x14x13   				|
+| Conv2D	    | 1x1 stride, VALID padding, output 10x10x23 	|
+| Conv2D          		|           									|
+| Conv2D				| keep rate 0.6									|
+| Flatten			| 2x2 stride, output 5x5x23     				|
+| Dense				| output 575									|
+| Dense				| keep rate 0.6									|
+| Dense		| output 275									|
+| Dense					|												|
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
