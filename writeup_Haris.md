@@ -145,7 +145,7 @@ Normalization: divided each pixel by 255 (max value of a pixel) and shifted to z
     model.add(Lambda(lambda x: x/255.0 - 0.5, input_shape=(160,320,3)))
 ```
 
-Cropping: I crop 70 rows of pixels from the top of the image and 25 rows from the bottom.
+Cropping: cropped 70 rows of pixels from the top of the image and 25 rows from the bottom.
 
 ```python
     model.add(Cropping2D(cropping=((70,25), (0,0))))
