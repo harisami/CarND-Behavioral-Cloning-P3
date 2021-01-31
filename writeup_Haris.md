@@ -112,7 +112,7 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 
 Next, are 2 convolutional layers with 3x3 kernel size and 1x1 stride to further increase the number of neurons. All convolutional layers are RELU activated to introduce non-linearity (`lines 35-39`). Next and finally, fully connected layers come up.
 
-Here is a visualization of the architecture (image borrowed from NVIDIA).
+Here is a visualization of the architecture (image courtesy: NVIDIA).
 
 ![alt text][image1]
 
