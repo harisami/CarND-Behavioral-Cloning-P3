@@ -19,6 +19,8 @@ The goals/steps of this project are the following:
 [image4]: ./examples/lefttocenter_02.jpg "Recovery Image"
 [image5]: ./examples/righttocenter_01.jpg "Recovery Image"
 [image6]: ./examples/righttocenter_02.jpg "Recovery Image"
+[image7]: ./examples/curve_01.jpg "Curve Image"
+[image8]: ./examples/curve_02.jpg "Curve Image"
 
 ---
 ### Required Files and Quality of Code
@@ -127,10 +129,9 @@ I then recorded the vehicle recovering from the left and right sides of the road
 
    ![alt text][image5]          ![alt text][image6]
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+Further on, I also recorded another lap of smooth driving around the curves. Here are a couple of sample images.
 
-![alt text][image6]
-![alt text][image7]
+   ![alt text][image7]          ![alt text][image8]
 
 Etc ....
 
