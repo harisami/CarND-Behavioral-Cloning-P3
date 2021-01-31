@@ -99,10 +99,10 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 | Conv2D 3x3         	| Convolution: 64 filters, 1x1 stride, VALID padding |
 | Conv2D 3x3			| Convolution: 64 filters, 1x1 stride, VALID padding |
 | Flatten			    |                                      				 |
-| Dense				    | output 100									     |
-| Dense				    | output 50									         |
-| Dense		            | output 10									         |
-| Dense					| output 1											 |
+| Dense				    | Fully Connected Layer, output 100				     |
+| Dense				    | Fully Connected Layer, output 50			         |
+| Dense		            | Fully Connected Layer, output 10			         |
+| Dense					| Fully Connected Layer, output 1					 |
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
