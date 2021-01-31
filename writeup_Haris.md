@@ -42,15 +42,16 @@ The `model.py` file contains the code for training and saving the convolution ne
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of convolutional layers with 5x5 and 3x3 filter sizes and depths between 24 and 64 (`model.py lines35-39`).
+My model consists of convolutional layers with 5x5 and 3x3 filter sizes and depths between 24 and 64 (`model.py lines 35-39`).
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+The model includes RELU activations (within each convolutional layer) to introduce nonlinearity, and the data is normalized using a Keras lambda layer (`line 33`).
 
-#### 2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting of the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
-
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+I have used the split of 75% training data and 25% validation data of the full data set. To avoid overfitting, more data was collected and augmented by carrying out the following driving methods.
+* 3 laps of center lane driving
+* 1 lap of recovery driving from the sides
+* 1 lap of driving smoothly around the curves
 
 #### 3. Model parameter tuning
 
