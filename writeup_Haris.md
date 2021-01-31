@@ -87,22 +87,22 @@ Once more, there came the turn of running the simulator yet again to see if the 
 
 #### 2. Model Architecture
 
-The final model architecture (`model.py lines 33-44`) consists of a convolution neural network with the following layers and layer sizes.
+The final model architecture (`model.py lines 33-44`) consists of a convolution neural network with the following layers.
 
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Lambda         		| 32x32x1 Grayscale Image						| 
-| Cropping2D| 1x1 stride, VALID padding, output 28x28x13 	|
-| Conv2D					|												|
-| Conv2D	      	| 2x2 stride, output 14x14x13   				|
-| Conv2D	    | 1x1 stride, VALID padding, output 10x10x23 	|
-| Conv2D          		|           									|
-| Conv2D				| keep rate 0.6									|
-| Flatten			| 2x2 stride, output 5x5x23     				|
-| Dense				| output 575									|
-| Dense				| keep rate 0.6									|
-| Dense		| output 275									|
-| Dense					|												|
+| Layer         		|     Description	        					     | 
+|:---------------------:|:--------------------------------------------------:| 
+| Lambda         		| Normalization w/ zero mean, input 160x320x3	     | 
+| Cropping2D     	    | Cropping, output 65x320x3  	                     |
+| Conv2D 5x5			| Convolution: 24 filters, 2x2 stride, VALID padding |
+| Conv2D 5x5	      	| Convolution: 36 filters, 2x2 stride, VALID padding |
+| Conv2D 5x5	        | Convolution: 48 filters, 2x2 stride, VALID padding |
+| Conv2D 3x3         	| Convolution: 64 filters, 1x1 stride, VALID padding |
+| Conv2D 3x3			| Convolution: 64 filters, 1x1 stride, VALID padding |
+| Flatten			    |                                      				 |
+| Dense				    | output 100									     |
+| Dense				    | output 50									         |
+| Dense		            | output 10									         |
+| Dense					| output 1											 |
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
