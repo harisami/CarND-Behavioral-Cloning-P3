@@ -24,6 +24,9 @@ The goals/steps of this project are the following:
 [image9]: ./examples/sample_image.jpg "Original Image"
 [image10]: ./examples/sample_image_cropped.jpg "Cropped Image"
 [image11]: ./examples/visualization.jpg "Loss Visualization"
+[image12]: ./examples/left_image.jpg "Left Camera Image"
+[image13]: ./examples/center_image.jpg "Center Camera Image"
+[image14]: ./examples/right_image.jpg "Right Camera Image"
 
 ---
 ### Required Files and Quality of Code
@@ -40,30 +43,32 @@ Using the Udacity provided simulator and my `drive.py` file, the car can be driv
 ```
 python drive.py model.h5
 ```
-The `model.py` file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
+The `model.py` file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model using Python generator, and it contains comments to explain how the code works.
 
 ### Model Architecture and Training Strategy
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of convolutional layers with 5x5 and 3x3 filter sizes and depths between 24 and 64 (`model.py lines 35-39`).
+My model consists of convolutional layers with 5x5 and 3x3 filter sizes and depths between 24 and 64 (`model.py lines 69-73`).
 
-The model includes RELU activations (within each convolutional layer) to introduce nonlinearity, and the data is normalized using a Keras lambda layer (`line 33`).
+The model includes RELU activations (within each convolutional layer) to introduce nonlinearity, and the data is normalized using a Keras lambda layer (`line 66`).
 
 #### 2. Attempts to reduce overfitting of the model
 
-I have used the split of 75% training data and 25% validation data of the full data set. To avoid overfitting, more data was collected and augmented by carrying out the following driving methods.
+I have used the split of 75% training data and 25% validation data of the full data set. To avoid overfitting, more data was collected by carrying out the following driving methods.
 * 3 laps of center lane driving
 * 1 lap of recovery driving from the sides
 * 1 lap of driving smoothly around the curves
 
+Furthermore, images from side cameras were added to the data set as well.
+
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (`model.py line 46`).
+The model used an adam optimizer, so the learning rate was not tuned manually (`model.py line 82`).
 
 #### 4. Appropriate training data
 
-I used a combination of center lane driving, recovery driving from both sides and smooth driving around the curves to collect enough useful training data.
+I used a combination of center lane driving, recovery driving from both sides and smooth driving around the curves as well as images from the side cameras to collect enough useful training data.
 
 ### Architecture and Training Documentation
 
@@ -91,7 +96,7 @@ Once more, there came the turn of running the simulator yet again to see if the 
 
 #### 2. Model Architecture
 
-The final model architecture (`model.py lines 33-44`) consists of a convolution neural network with the following layers.
+The final model architecture (`model.py lines 66-79`) consists of a convolution neural network with the following layers.
 
 | Layer         		|     Description	        					     | 
 |:---------------------:|:--------------------------------------------------:| 
@@ -108,9 +113,9 @@ The final model architecture (`model.py lines 33-44`) consists of a convolution 
 | Dense		            | Fully Connected Layer, output 10			         |
 | Dense					| Fully Connected Layer, output 1					 |
 
-`Lambda` layer normalizes the data set as well shifts it to zero mean (`line 33`). In order to remove extra unnecessary data and focus on the road, the `Cropping2D` layer removes 70 rows from the top of every image and 25 rows from the bottom resulting in an image shape of `65x320x3`. Then comes 3 convolutional layers with 5x5 kernel size and a stride of 2x2. The depth of these layers increase every step.
+`Lambda` layer normalizes the data set as well shifts it to zero mean (`line 66`). In order to remove extra unnecessary data and focus on the road, the `Cropping2D` layer removes 70 rows from the top of every image and 25 rows from the bottom resulting in an image shape of `65x320x3`. Then comes 3 convolutional layers with 5x5 kernel size and a stride of 2x2. The depth of these layers increase every step.
 
-Next, are 2 convolutional layers with 3x3 kernel size and 1x1 stride to further increase the number of neurons. All convolutional layers are RELU activated to introduce non-linearity (`lines 35-39`). Next and finally, fully connected layers come up.
+Next, are 2 convolutional layers with 3x3 kernel size and 1x1 stride to further increase the number of neurons. All convolutional layers are RELU activated to introduce non-linearity (`lines 69-73`). Next and finally, fully connected layers come up.
 
 Here is a visualization of the architecture (image courtesy: NVIDIA).
 
@@ -137,7 +142,12 @@ Further on, I also recorded another lap of smooth driving around the curves to e
    ![alt text][image7]          ![alt text][image8]
   
 
-After the collection process, I had 15099 number of data images. I then preprocessed this data by normalizing and cropping the images.
+Sample of left, center and right images are as follows.
+
+![alt text][image12]  ![alt text][image13]  ![alt text][image14]
+
+
+After the collection process, I had 15099 data images. I then preprocessed this data by normalizing and cropping the images.
 
 Normalization: divided each pixel by 255 (max value of a pixel) and shifted to zero-mean data set.
 
