@@ -132,7 +132,7 @@ I then recorded the vehicle recovering from the left and right sides of the road
 
    ![alt text][image5]          ![alt text][image6]
 
-Further on, I also recorded another lap of smooth driving around the curves. Here are a couple of sample images.
+Further on, I also recorded another lap of smooth driving around the curves to enable the car drive better around the curves. Here are a couple of sample images.
 
    ![alt text][image7]          ![alt text][image8]
   
